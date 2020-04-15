@@ -1,0 +1,31 @@
+######code of question 1a#####
+ubuntu@ip-172-31-18-253:~$ mysql -u awkologist -p compbiol -e 'select * from expression;'
+
+######code of question 1b######
+ubuntu@ip-172-31-18-253:~$ mysql -u awkologist -p compbiol -e 'select * from annotation;'
+
+######code of question 1c######
+ubuntu@ip-172-31-18-253:~$ mysql -u awkologist -p compbiol -e 'select a.gene, a.function, 
+e.expr_value from annotation as a left join expression as e on a.gene=e.gene;'
+
+######code of question 1d######
+mysql> select a1.gene, a1.metabolism from annotation a1, annotation a2 
+where a1.metabolism=a2.metabolism and a1.gene <> a2.gene;
+
+######code of question 2a######
+mysql> select m.LastName, m.FirstName from Member m where m.Coach is NULL;
+
+######code of question 2b######
+mysql> select m.LastName, m.Firstname from Member m where JoinDate like '%2010%';
+
+######code of question 2c######
+mysql> select distinct m.MemberID, m.LastName, m.FirstName 
+from Member m inner join Entry e on m.MemberID = e.MemberID 
+where not exists 
+(select * from Entry e where e.MemberID = m.MemberID and e.Year='2014');
+
+######code of question 2d######
+mysql> select m.LastName, m.FirstName, m.MemberID 
+from Member m where not exists 
+( select * from Entry e1 where not exists 
+( select * from Entry e2 where e2.MemberID = m.MemberID and e1.Year = e2.Year )); 
