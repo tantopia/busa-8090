@@ -1,0 +1,27 @@
+######question 1 (a)#######
+ubuntu@ip-172-31-18-253:~$ awk '$2<1000' expression;
+
+######question 1 (b)#######
+ubuntu@ip-172-31-18-253:~$ awk '%ase%' annotation;
+
+######question 1 (c)#######
+ubuntu@ip-172-31-18-253:~$ awk'(Purine|Pyrimidine)biosynthesis ' annotation;
+
+
+######question 2 (a)#######
+ubuntu@ip-172-31-18-253:~$ sudo mysql
+mysql> GRANT ALL ON world_x.* TO awkologist@localhost IDENTIFIED BY "awkology";
+mysql> create database world_x;
+mysql> show databases;
+mysql> source world_x.sql;
+mysql> show tables;
+
+######question 2 (b)#######
+mysql> select ci.Name, co.Name, cl.Percentage from city ci, country co, countrylanguage cl where ci.ID=co.Capital and co.Code=cl.CountryCode and cl.Percentage>50 and cl.Language='English';
+
+######question 3#######
+> library(ggplot2)
+> Covid_19<- data.frame(f.country = c("US", "Italy", "Spain", "Germany", "Austria"), mortality = c(17.84,45.27,50.98,7.61,6.43))
+gg1<ggplot(Covid_19,aes(x=reorder(f.country,mortality),y=mortality))+geom_bar(stat="identity",fill="steelblue")+coord_flip()
+>gg2<-gg1+ggtitle("Covid_19 deaths per 10000 population")+xlab("country")+ylab("Mortality")
+> gg2
